@@ -1,0 +1,34 @@
+
+- if user.id.nil?
+  - title = "User新規登録"
+  - render_submit = render partial: "shared/buttons/new"
+- else
+  - title = "User情報編集"
+  - render_submit = render partial: "shared/buttons/edit"
+
+.modal-dialog.modal-content
+  = form_for user, url: path, remote: true do |f|
+    .modal-header
+      h3= title
+    .modal-body.books.form
+      table.table-base
+        tr
+          th.name 名前
+          td.name
+            = f.text_field :name
+            = render partial: "shared/error_messages", locals: {object: user, column: :name}
+        tr
+          th.password パスワード
+          td.password
+            = f.password_field :password
+            = render partial: "shared/error_messages", locals: {object: user, column: :password}
+        tr
+          th.password_confirmation パスワード再入力
+          td.password_confirmation
+            = f.password_field :password_confirmation
+            = render partial: "shared/error_messages", locals: {object: user, column: :password_confirmation}
+    .modal-footer
+      = render_submit
+      = render partial: "shared/buttons/cancel"
+
+

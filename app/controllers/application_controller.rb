@@ -18,7 +18,6 @@ class ApplicationController < ActionController::Base
   private
 
   def find_user_from_session
-    p User.where(id: session[:user_id]).first
     User.where(id: session[:user_id]).first if session[:user_id]
   end
 

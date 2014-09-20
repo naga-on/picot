@@ -6,6 +6,14 @@ Rails.application.routes.draw do
   post '/login'   => 'logins#login'
   get  '/destroy' => 'logins#destroy'
 
+  ##--  User
+  get   'users'             => 'users#list'
+  get   'users/new'         => 'users#new'
+  post  'users/new'         => 'users#create'
+  get   'users/:uid/edit'   => 'users#edit', as: :users_edit
+  patch 'users/:uid/edit'   => 'users#update'
+  get   'users/:uid/toggle' => 'users#toggle', as: :users_toggle
+
   ##--  Book
   get   'books'             => 'books#list'
   get   'books/new'         => 'books#new'

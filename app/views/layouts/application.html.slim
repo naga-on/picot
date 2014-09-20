@@ -30,8 +30,8 @@ html lang="en"
         a.navbar-brand href="#"Picot
         .navbar-collapse.collapse.navbar-responsive-collapse
           ul.nav.navbar-nav
-            li= link_to "Link 1", "/path1"
-            li= link_to "Link 2", "/path2"
+            li= link_to "User", users_path
+            li= link_to "Book", books_path
             li= link_to "Link 3", "/path3"
           ul.nav.navbar-nav.navbar-right
             - if current_user
