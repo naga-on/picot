@@ -1,4 +1,11 @@
 Rails.application.routes.draw do
+  root to: 'logins#new'
+
+  ##-- Login
+  get  '/login'   => 'logins#new'
+  post '/login'   => 'logins#login'
+  get  '/destroy' => 'logins#destroy'
+
   ##--  Book
   get   'books'             => 'books#list'
   get   'books/new'         => 'books#new'
