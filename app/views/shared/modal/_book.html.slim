@@ -1,0 +1,29 @@
+
+- if book.id.nil?
+  - title = "Book新規登録"
+  - render_submit = render partial: "shared/buttons/new"
+- else
+  - title = "Book情報編集"
+  - render_submit = render partial: "shared/buttons/edit"
+
+.modal-dialog.modal-content
+  = form_for book, url: path, remote: true do |f|
+    .modal-header
+      h3= title
+    .modal-body.books.form
+      table.table-base
+        tr
+          th.title タイトル
+          td.title
+            = f.text_field :title
+            = render partial: "shared/error_messages", locals: {object: book, column: :title}
+        tr
+          th.author 作者
+          td.author
+            = f.text_field :author
+            = render partial: "shared/error_messages", locals: {object: book, column: :author}
+    .modal-footer
+      = render_submit
+      = render partial: "shared/buttons/cancel"
+
+
