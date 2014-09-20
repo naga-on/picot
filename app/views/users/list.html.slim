@@ -1,0 +1,24 @@
+
+= render partial: "shared/modal/target"
+
+= link_to users_new_path, remote: true do
+  = render partial: "shared/buttons/new"
+br
+br
+
+.users.list
+  table.table-base
+    thead
+      tr
+        th.name 名前
+        th.edit 編集
+        th.toggle 有効/無効
+    tbody
+      - @users.each do |user|
+        = render partial: "shared/row", locals: {is_active: user.is_active}
+        td.name= user.name
+        td.edit= link_to users_edit_path(uid: user.id), remote: true do
+          = render partial: "shared/buttons/edit"
+        td.toggle= link_to users_toggle_path(uid: user.id) do
+          = render partial: "shared/buttons/toggle", locals: {is_active: user.is_active}
+
