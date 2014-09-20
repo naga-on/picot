@@ -1,0 +1,28 @@
+
+= render partial: "shared/modal/target"
+
+= link_to books_new_path, remote: true do
+  = render partial: "shared/buttons/new"
+br
+br
+
+.books.list
+  table.table-base
+    thead
+      tr
+        th.title タイトル
+        th.author 作者
+        th.page ページ数
+        th.edit 編集
+        th.toggle 有効/無効
+    tbody
+      - @books.each do |book|
+        = render partial: "shared/row", locals: {is_active: book.is_active}
+        td.title= book.title
+        td.author= book.author
+        td.page= book.page
+        td.edit= link_to books_edit_path(bid: book.id), remote: true do
+          = render partial: "shared/buttons/edit"
+        td.toggle= link_to books_toggle_path(bid: book.id) do
+          = render partial: "shared/buttons/toggle", locals: {is_active: book.is_active}
+

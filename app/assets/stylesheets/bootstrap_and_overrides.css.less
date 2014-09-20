@@ -27,3 +27,24 @@
 //
 // Example:
 // @link-color: #ff0000;
+
+
+.table-base {
+  .table;
+  .table-bordered;
+  .table-hover;
+
+  thead > tr > th {
+    text-align: center;
+    vertical-align: middle;
+  }
+
+  tbody > tr {
+    th, td { vertical-align: middle; }
+    th { text-align: center; }
+    td {
+      input[type="text"], input[type="password"] { .form-control; }
+    }
+  }
+}
+
