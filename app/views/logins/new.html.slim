@@ -1,0 +1,15 @@
+h2 ログイン
+= form_for :user, html: {class: 'form-horizontal' }, :url => { action: :login } do |f|
+  .control-group
+    = f.label :名前, { class: 'control-label' }
+    .controls
+      = f.text_field :name, placeholder: 'takamatsu', class: 'form-control'
+  .control-group
+    = f.label :パスワード, { class: 'control-label' }
+    .controls
+      = f.password_field :password, class: 'form-control'
+  .actions
+    .controls
+      = button_tag type: 'f.submit', class: 'btn btn-primary' do
+        | ログイン
+      
