@@ -13,6 +13,5 @@ Rails.application.routes.draw do
   get   'books/:bid/edit'   => 'books#edit', as: :books_edit
   patch 'books/:bid/edit'   => 'books#update'
   get   'books/:bid/toggle' => 'books#toggle', as: :books_toggle
->>>>>>> master
 end
 
