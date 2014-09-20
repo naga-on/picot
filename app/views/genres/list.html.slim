@@ -1,0 +1,24 @@
+
+= render partial: "shared/modal/target"
+
+= link_to genres_new_path, remote: true do
+  = render partial: "shared/buttons/new"
+br
+br
+
+.genres.list
+  table.table-base
+    thead
+      tr
+        th.name タイトル
+        th.edit 編集
+        th.toggle 有効/無効
+    tbody
+      - @genres.each do |genre|
+        = render partial: "shared/row", locals: {is_active: genre.is_active}
+        td.name= genre.name
+        td.edit= link_to genres_edit_path(gid: genre.id), remote: true do
+          = render partial: "shared/buttons/edit"
+        td.toggle= link_to genres_toggle_path(gid: genre.id) do
+          = render partial: "shared/buttons/toggle", locals: {is_active: genre.is_active}
+

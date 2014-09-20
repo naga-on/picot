@@ -1,0 +1,24 @@
+
+- if genre.id.nil?
+  - title = "ジャンル新規登録"
+  - render_submit = render partial: "shared/buttons/new"
+- else
+  - title = "ジャンル情報編集"
+  - render_submit = render partial: "shared/buttons/edit"
+
+.modal-dialog.modal-content
+  = form_for genre, url: path, remote: true do |f|
+    .modal-header
+      h3= title
+    .modal-body.genres.form
+      table.table-base
+        tr
+          th.name ジャンル名
+          td.name
+            = f.text_field :name
+            = render partial: "shared/error_messages", locals: {object: genre, column: :name}
+    .modal-footer
+      = render_submit
+      = render partial: "shared/buttons/cancel"
+
+
