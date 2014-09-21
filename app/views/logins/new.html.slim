@@ -1,15 +1,31 @@
-h2 ログイン
-= form_for :user, html: {class: 'form-horizontal' }, :url => { action: :login } do |f|
-  .control-group
-    = f.label :名前, { class: 'control-label' }
-    .controls
-      = f.text_field :name, placeholder: 'takamatsu', class: 'form-control'
-  .control-group
-    = f.label :パスワード, { class: 'control-label' }
-    .controls
-      = f.password_field :password, class: 'form-control'
-  .actions
-    .controls
-      = button_tag type: 'f.submit', class: 'btn btn-primary' do
-        | ログイン
-      
+.row-fluid
+  .col-sm-12
+    .col-sm-6
+      div
+        h2 ようこと Picot へ
+        | Picotは、みんなで...
+        br
+        br
+    .col-sm-6
+      .row-fluid
+        h4
+          span.glyphicon.glyphicon-arrow-down 
+          |ログインはこちらから
+          span.glyphicon.glyphicon-arrow-down 
+        = form_for :user, html: {class: 'form-horizontal' }, :url => { action: :login } do |f|
+          .control-group
+            = f.label :名前, { class: 'control-label' }
+            .controls
+              = f.text_field :name, placeholder: 'takamatsu', class: 'form-control'
+          .control-group
+            = f.label :パスワード, { class: 'control-label' }
+            .controls
+              = f.password_field :password, class: 'form-control'
+          .actions
+            .controls
+              = button_tag type: 'f.submit', class: 'btn btn-default' do
+                | ログイン
+               
+      .row-fluid
+        h4 お知らせ
+        pre 現在、絶賛実装中です。
