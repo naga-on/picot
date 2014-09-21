@@ -1,3 +1,10 @@
+= form_tag(mains_books_path, {method: :get}) do
+  = text_field :book, :genres, {class: 'form-control tokenfield'}
+  = button_tag type: 'f.submit', class: 'btn btn-primary' do
+    | 検索
+  br
+  br
+= "#{@input_genres}での検索結果" if @input_genres.present?
 
 .mains.books
   table.table-base
@@ -11,9 +18,16 @@
       tr
         - each_book.each do |book|
           td.cover= link_to mains_volumes_path(bid: book.id) do
-            = image_tag book.thumbnail, width: "250px", height: "250px"
+            /= image_tag book.thumbnail, width: "250px", height: "250px"
       tr
         - each_book.each do |book|
           td.page= "#{book.page}ページ"
 
-
+javascript:
+  $('.tokenfield').tokenfield({
+    autocomplete: {
+      source: ['red','blue','green','yellow','violet','brown','purple','black','white'],
+      delay: 100
+    },
+    showAutocompleteOnFocus: true
+  })
