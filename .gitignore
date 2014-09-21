@@ -17,4 +17,6 @@
 
 *.*~
 
+/public/data/*
+!.keep
 
