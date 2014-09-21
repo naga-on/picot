@@ -29,5 +29,13 @@ Rails.application.routes.draw do
   get   'genres/:gid/edit'   => 'genres#edit', as: :genres_edit
   patch 'genres/:gid/edit'   => 'genres#update'
   get   'genres/:gid/toggle' => 'genres#toggle', as: :genres_toggle
+
+  ##--  Volume
+  get   'books/:bid/volumes'             => 'volumes#list', as: :volumes
+  get   'books/:bid/volumes/new'         => 'volumes#new', as: :volumes_new
+  post  'books/:bid/volumes/new'         => 'volumes#create'
+  get   'books/:bid/volumes/:vid/edit'   => 'volumes#edit', as: :volumes_edit
+  patch 'books/:bid/volumes/:vid/edit'   => 'volumes#update'
+  get   'books/:bid/volumes/:vid/toggle' => 'volumes#toggle', as: :volumes_toggle
 end
 

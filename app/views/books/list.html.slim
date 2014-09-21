@@ -18,7 +18,7 @@ br
     tbody
       - @books.each do |book|
         = render partial: "shared/row", locals: {is_active: book.is_active}
-        td.title= book.title
+        td.title= link_to book.title, volumes_path(bid: book.id)
         td.author= book.author
         td.page= book.page
         td.edit= link_to books_edit_path(bid: book.id), remote: true do

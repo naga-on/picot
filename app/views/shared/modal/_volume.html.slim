@@ -1,0 +1,33 @@
+
+- if volume.id.nil?
+  - title = "Volume新規登録"
+  - render_submit = render partial: "shared/buttons/new"
+- else
+  - title = "Volume情報編集"
+  - render_submit = render partial: "shared/buttons/edit"
+
+.modal-dialog.modal-content
+  = form_for volume, url: path, remote: true do |f|
+    .modal-header
+      h3= title
+    .modal-body.volumes.form
+      table.table-base
+        tr
+          th.title タイトル
+          td.title
+            = f.text_field :title
+            = render partial: "shared/error_messages", locals: {object: volume, column: :title}
+        tr
+          th.pdf_file pdfファイル
+          td.pdf_file
+            = f.file_field :pdf_file
+            = render partial: "shared/error_messages", locals: {object: volume, column: :pdf_file}
+        tr
+          th.cover 表紙ページ番号
+          td.cover
+            = f.text_field :cover
+            = render partial: "shared/error_messages", locals: {object: volume, column: :cover}
+    .modal-footer
+      = render_submit
+      = render partial: "shared/buttons/cancel"
+

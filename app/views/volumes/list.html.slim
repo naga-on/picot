@@ -1,0 +1,28 @@
+
+= render partial: "shared/modal/target"
+
+= link_to volumes_new_path, remote: true do
+  = render partial: "shared/buttons/new"
+br
+br
+
+.volumes.list
+  table.table-base
+    thead
+      tr
+        th.title タイトル
+        th.page ページ数
+        th.cover 表紙ページ番号
+        th.edit 編集
+        th.toggle 有効/無効
+    tbody
+      - @volumes.each do |volume|
+        = render partial: "shared/row", locals: {is_active: volume.is_active}
+        td.name= volume.title
+        td.page= volume.page
+        td.cover= volume.cover
+        td.edit= link_to volumes_edit_path(vid: volume.id), remote: true do
+          = render partial: "shared/buttons/edit"
+        td.toggle= link_to volumes_toggle_path(vid: volume.id) do
+          = render partial: "shared/buttons/toggle", locals: {is_active: volume.is_active}
+
