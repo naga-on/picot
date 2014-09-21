@@ -11,8 +11,16 @@ class VolumesController < ApplicationController
 
   def create
     @volume = Volume.new(volume_params)
-    render :new and return unless @volume.save
-    render template: "shared/reload"
+    @volume.mkdir
+    @volume.book_id = params[:bid]
+    @volume.img_dir = @volume.set_img
+    @volume.pdf_file = @volume.set_pdf
+    @volume.page = `ls #{@volume.img_dir}`.split.count
+    unless @volume.save
+      @volume.rmdir
+      render :new and return
+    end
+    redirect_to volumes_path
   end
 
   def edit

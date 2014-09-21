@@ -7,7 +7,7 @@
   - render_submit = render partial: "shared/buttons/edit"
 
 .modal-dialog.modal-content
-  = form_for volume, url: path, remote: true do |f|
+  = form_for volume, url: path, data: {remote: true} do |f|
     .modal-header
       h3= title
     .modal-body.volumes.form
