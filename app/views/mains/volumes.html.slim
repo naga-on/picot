@@ -1,0 +1,16 @@
+
+.mains.volumes
+  table.table-base
+    - @volumes.each_slice(4) do |each_volume|
+      tr
+        - each_volume.each do |volume|
+          th.title= volume.title
+      tr
+        - each_volume.each do |volume|
+          td.cover= link_to volume.pdf_link, target: "_blank"
+            = image_tag volume.thumbnail, width: "250px", height: "250px"
+      tr
+        - each_volume.each do |volume|
+          td.page= "#{volume.page}ページ"
+
+

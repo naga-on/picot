@@ -6,6 +6,10 @@ Rails.application.routes.draw do
   post '/login'   => 'logins#login'
   get  '/destroy' => 'logins#destroy'
 
+  ##--  Mains
+  get 'mains/books'      => 'mains#books'
+  get 'mains/books/:bid' => 'mains#volumes', as: :mains_volumes
+
   ##--  User
   get   'users'             => 'users#list'
   get   'users/new'         => 'users#new'

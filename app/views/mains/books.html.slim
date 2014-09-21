@@ -1,0 +1,19 @@
+
+.mains.books
+  table.table-base
+    - @books.each_slice(4) do |each_book|
+      tr
+        - each_book.each do |book|
+          th.title= book.title
+      tr
+        - each_book.each do |book|
+          th.author= book.author
+      tr
+        - each_book.each do |book|
+          td.cover= link_to mains_volumes_path(bid: book.id) do
+            = image_tag book.thumbnail, width: "250px", height: "250px"
+      tr
+        - each_book.each do |book|
+          td.page= "#{book.page}ページ"
+
+

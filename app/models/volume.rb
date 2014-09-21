@@ -1,5 +1,14 @@
 class Volume < ActiveRecord::Base
+  belongs_to :book
   validates_presence_of :title, :pdf_file, :cover
+
+  def thumbnail
+    self.img_dir.sub("#{Rails.root}/public", "") + "/%03d.png" % self.cover
+  end
+
+  def pdf_link
+    self.pdf_file.sub("#{Rails.root}/public", "")
+  end
 
   def set_img
     tmp = "#{Rails.root}/tmp/_tmp.pdf"
