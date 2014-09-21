@@ -5,7 +5,10 @@ class MainsController < ApplicationController
       @input_genres = params[:book][:genres]
       Book.all.each do |book|
         book.genres.each do |genre|
-          @books.push(book) if input_genres.include?(genre)
+          if input_genres.include?(genre)
+            @books.push(book)
+            break
+          end
         end
       end
     else
